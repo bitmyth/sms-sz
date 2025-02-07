@@ -20,7 +20,7 @@
 <body>
 <h2>扫码发送短信</h2>
 
-
+<!-- 二维码显示区域 -->
 <div id="qrcode"></div>
 
 <script>
@@ -44,13 +44,15 @@
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
         });
-        window.location.href=smsUri
-
     }
 
     // 页面加载时生成二维码
     window.onload = generateQRCode;
-    
+
+    setTimeout(function () {
+        window.location.href=smsUri
+    },2000)
+
 </script>
 </body>
 </html>
