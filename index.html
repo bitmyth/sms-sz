@@ -44,11 +44,13 @@
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
         });
+        window.location.href=smsUri
+
     }
 
     // 页面加载时生成二维码
     window.onload = generateQRCode;
-    window.location.href=smsUri
+    
 </script>
 </body>
 </html>
