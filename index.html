@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>短信二维码生成器</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        #qrcode {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<h2>扫码发送短信</h2>
+
+<!-- 二维码显示区域 -->
+<div id="qrcode"></div>
+
+<script>
+    // 预设参数（根据需要修改这两个值）
+    const presetPhone = "10690700367";  // 预设电话号码
+    const presetMessage = "sz";  // 预设短信内容
+
+    // 生成短信URI（包含URL编码）
+    function generateSmsUri(phone, message) {
+        return `sms:${phone}?body=${encodeURIComponent(message)}`;
+    }
+    const smsUri = generateSmsUri(presetPhone, presetMessage);
+
+    // 生成二维码
+    function generateQRCode() {
+        new QRCode(document.getElementById("qrcode"), {
+            text: smsUri,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    }
+
+    // 页面加载时生成二维码
+    window.onload = generateQRCode;
+    window.location.href=smsUri
+</script>
+</body>
+</html>
